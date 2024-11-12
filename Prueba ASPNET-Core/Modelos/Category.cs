@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataBase.Models
+namespace Prueba_ASPNET_Core.Modelos
 {
     public class Category
     {
@@ -14,9 +14,10 @@ namespace DataBase.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CategoryId { get; set; }
         [Required]
-        [MaxLength(100)]
+        //Añadir las comprobaciones de longitud de caracteres 
+        [MaxLength(100, ErrorMessage = "The name can not be longer than 100 letters")]
         public string Name { get; set; }
 
-        public virtual ICollection<Task> Tasks { get; set; }
+        public virtual ICollection<ToDoTasks> Tasks { get; set; }
     }
 }

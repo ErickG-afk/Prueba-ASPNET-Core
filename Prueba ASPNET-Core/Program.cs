@@ -1,11 +1,15 @@
-using DataBase.Models;
 using Microsoft.EntityFrameworkCore;
+using Prueba_ASPNET_Core.Data;
+using Prueba_ASPNET_Core.Modelos;
+using Prueba_ASPNET_Core.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddControllers();
 
 //Añadir el contexto a DBContext y pasarle la cadena de conexión almacenada en el archivo de config json
 builder.Services.AddDbContext<ToDoContext>( options =>

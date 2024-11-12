@@ -6,18 +6,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataBase.Models
+namespace Prueba_ASPNET_Core.Modelos
 {
-    public class Task
+    public class ToDoTasks
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int TaskId { get; set; }
         [Required]
-        [MaxLength(100)]
+        //Añadir las comprobaciones de longitud de caracteres 
+        [MaxLength(100, ErrorMessage = "The title can not be longer than 100 letters")]
         public string Title { get; set; }
         public string Description { get; set; } = string.Empty;
         public DateTime DueDate { get; set; }
+        [Range(1, 5, ErrorMessage = "Priority must be between 1 and 5.")]
         public int Prority { get; set; }
         public bool IsCompleted { get; set; }
         public int CategoryId { get; set; }

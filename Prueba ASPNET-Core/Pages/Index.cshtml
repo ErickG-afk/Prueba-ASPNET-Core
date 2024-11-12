@@ -1,10 +1,70 @@
 ﻿@page
-@model IndexModel
+@model Prueba_ASPNET_Core.Pages.IndexModel
+
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Index";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h1>@ViewData["Title"]</h1>
+
+<!-- Enlace para crear una nueva tarea -->
+<p>
+    <a asp-page="/ToDoTask/Create">Create New Task</a> |
+    <a asp-page="/Category/Create">Create New Category</a>
+</p>
+
+<h2>ToDo Tasks</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.ToDoTasks[0].Title)</th>
+            <th>@Html.DisplayNameFor(model => model.ToDoTasks[0].Description)</th>
+            <th>@Html.DisplayNameFor(model => model.ToDoTasks[0].DueDate)</th>
+            <th>@Html.DisplayNameFor(model => model.ToDoTasks[0].Prority)</th>
+            <th>@Html.DisplayNameFor(model => model.ToDoTasks[0].IsCompleted)</th>
+            <th>@Html.DisplayNameFor(model => model.ToDoTasks[0].CategoryId)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ToDoTasks)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                <td>@Html.DisplayFor(modelItem => item.DueDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.Prority)</td>
+                <td>@Html.DisplayFor(modelItem => item.IsCompleted)</td>
+                <td>@Html.DisplayFor(modelItem => item.category.Name)</td>
+                <td>
+                    <a asp-page="/ToDoTask/Edit" asp-route-id="@item.TaskId">Edit</a> |
+                    <a asp-page="/ToDoTask/Details" asp-route-id="@item.TaskId">Details</a> |
+                    <a asp-page="/ToDoTask/Delete" asp-route-id="@item.TaskId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@* <h2>Categories</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Categories[0].Name)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var category in Model.Categories)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => category.Name)</td>
+                <td>
+                    <a asp-page="/Category/Edit" asp-route-id="@category.CategoryId">Edit</a> |
+                    <a asp-page="/Category/Details" asp-route-id="@category.CategoryId">Details</a> |
+                    <a asp-page="/Category/Delete" asp-route-id="@category.CategoryId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table> *@

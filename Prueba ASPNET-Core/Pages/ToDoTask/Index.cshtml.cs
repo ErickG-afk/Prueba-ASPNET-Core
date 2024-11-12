@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Prueba_ASPNET_Core.Modelos;
 
-namespace Prueba_ASPNET_Core.Pages
+namespace Prueba_ASPNET_Core.Pages.ToDoTask
 {
     public class IndexModel : PageModel
     {
